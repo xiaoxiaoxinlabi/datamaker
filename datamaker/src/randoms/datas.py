@@ -1,5 +1,5 @@
 #coding:utf8
-import sys
+import sys,os
 sys.path.append("..")
 import random
 
@@ -27,8 +27,7 @@ def random_chinese():
 
     firstnames = []
 
-
-    with open(r'E:\ssgongproject\ssgongGit\datamaker\src\randoms\firstname.txt', 'r', encoding = 'utf-8') as f:
+    with open(os.path.dirname(__file__)+ '/firstname.txt', 'r', encoding = 'utf-8') as f:
       data = f.read()
       firstname_list = data.replace('\n', ',' ).split(',')
 
@@ -38,7 +37,7 @@ def random_chinese():
 
     lastnames = []
 
-    with open(r'E:\ssgongproject\ssgongGit\datamaker\src\randoms\lastname.txt', 'r', encoding = 'utf-8') as f:
+    with open(os.path.dirname(__file__) +'/lastname.txt', 'r', encoding = 'utf-8') as f:
       data = f.read()
       lastname_list = data.split(',')
 
@@ -85,7 +84,7 @@ def random_email():
     
     email_suff = []
 
-    with open(r'E:\ssgongproject\ssgongGit\datamaker\src\randoms\email_suff.txt') as f:
+    with open(os.path.dirname(__file__) +'/email_suff.txt') as f:
       data = f.read()
       email_suff = data.lower().split(',')
 
@@ -153,6 +152,8 @@ def random_filed_of_study():
     return random.sample(filed_list, 1)
 
 
+
+#todo 时间效率
 def random_ymd( start = "1900-01-01", end = "2017-01-01", format="%Y-%m-%d"):
 
 

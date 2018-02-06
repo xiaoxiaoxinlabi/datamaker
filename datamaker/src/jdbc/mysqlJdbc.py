@@ -29,11 +29,11 @@ class MysqlJdbc(Parsers):
    
         return self.conn.cursor()
 
-    def execute(self, sql, args = None, multi = True):
+    def insert(self, sql, args = None, multi = True):
   
          self.connection().execute(sql, args)
        
-    def executemany(self, sql, args = None):
+    def insertmany(self, sql, args = None):
         self.connection().executemany(sql, args)
 
     def commit(self):

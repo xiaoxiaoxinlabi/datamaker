@@ -1,6 +1,6 @@
 #coding:utf-8
 
-import sys
+import sys,os
 sys.path.append("..")
 
 from src.jdbc.excelJdbc import ExcelJdbc
@@ -10,8 +10,8 @@ import datetime
 def fun():
     number = 100
     path = 'D://1234.xls'
-    column = [ 'ymd']
-    #column = ['id', 'perId', 'name', 'gender', 'email', 'phone']
+    #column = [ 'ymd']
+    column = ['id', 'perId', 'name', 'gender', 'email', 'phone', 'ymd']
     start_time = int(time.mktime(datetime.datetime.now().timetuple()))
     ex = ExcelJdbc(number, path, column)
     ex.writer_excel()
