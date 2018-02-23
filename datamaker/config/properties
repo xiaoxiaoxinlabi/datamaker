@@ -1,0 +1,7 @@
+[configs]
+number = 10
+path = D://1234.csv
+#path = D://1234.xls
+column = id, perId, name, gender, email, phone, ymd
+
+

@@ -27,7 +27,7 @@ def random_chinese():
 
     firstnames = []
 
-    with open(os.path.dirname(__file__)+ '/firstname.txt', 'r', encoding = 'utf-8') as f:
+    with open(os.path.dirname(__file__)+ '/firstname', 'r', encoding = 'utf-8') as f:
       data = f.read()
       firstname_list = data.replace('\n', ',' ).split(',')
 
@@ -37,7 +37,7 @@ def random_chinese():
 
     lastnames = []
 
-    with open(os.path.dirname(__file__) +'/lastname.txt', 'r', encoding = 'utf-8') as f:
+    with open(os.path.dirname(__file__) +'/lastname', 'r', encoding = 'utf-8') as f:
       data = f.read()
       lastname_list = data.split(',')
 
@@ -84,7 +84,7 @@ def random_email():
     
     email_suff = []
 
-    with open(os.path.dirname(__file__) +'/email_suff.txt') as f:
+    with open(os.path.dirname(__file__) +'/email_suff') as f:
       data = f.read()
       email_suff = data.lower().split(',')
 

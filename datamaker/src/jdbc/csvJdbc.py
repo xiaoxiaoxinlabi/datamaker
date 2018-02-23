@@ -1,11 +1,13 @@
 #coding:utf8
 import sys
 
+import collections
+
 sys.path.append("..")
-import random
+
 
 from src.entity.columns import ColumnName 
-
+import random
 import csv
 
 class CsvJdbc:
@@ -23,6 +25,7 @@ class CsvJdbc:
         m = self.number
 
         with open(self.path, 'w', newline = '') as csv_file:
+        
 
             # todo csv.DictWriter()
 
@@ -36,7 +39,14 @@ class CsvJdbc:
 
                 for i in range(len(columns)):
 
-                    datas.append(ColumnName(columns[i]).getfile())
+
+                    if isinstance(ColumnName(columns[i]).getfile(), collections.Iterable):
+                        
+                        rows = ''.join(ColumnName(columns[i]).getfile())
+                    else:
+                        rows = ColumnName(columns[i]).getfile()
+
+                    datas.append(rows)
                 
                 writer.writerow(datas)
 
@@ -45,14 +55,5 @@ class CsvJdbc:
         csv_file.close()
 
 
-
-
-
-if __name__ == '__main__':
-    clo = ['id', 'perId', 'name']
-
-    c = CsvJdbc(100, 'D://1.csv', clo )
-
-    c.create_data()
 
 

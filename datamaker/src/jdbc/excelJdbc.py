@@ -65,8 +65,6 @@ class ExcelJdbc:
 
         for j in range(len(datas)):
 
-            print('rows =', rows)
-                
             self.sheet.write(rows, j, datas[j])
 
 
