@@ -1,7 +1,10 @@
 [configs]
 number = 10
-path = D://1234.csv
+#path = D://1234
 #path = D://1234.xls
+path=
+
+# 目前支持的的字段有一下：（id, perId, name, gender, email, phone, ymd，marriage，ip，age，industries，politics，schoolName，degree，field）
 column = id, perId, name, gender, email, phone, ymd
 
 

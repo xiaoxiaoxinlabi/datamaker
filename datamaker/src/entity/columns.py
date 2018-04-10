@@ -8,64 +8,64 @@ class ColumnName(object):
 
 
 
-	def __init__(self, filename):
+	def __init__(self, fieldname):
 
-	   self.filename = filename
+	   self.fieldname = fieldname
 
 
 
 	def getfile(self):
 
 
-		if self.filename == 'name':
+		if self.fieldname == 'name':
 
 			return r.random_chinese()
 
-		elif self.filename == 'email':
+		elif self.fieldname == 'email':
 
 			return r.random_email()
 
-		elif self.filename == 'phone':
+		elif self.fieldname == 'phone':
 
 			return r.random_phone()
 
-		elif self.filename == 'id':
+		elif self.fieldname == 'id':
 			return r.randomint()
 
-		elif self.filename == 'gender':
+		elif self.fieldname == 'gender':
 
 			return r.random_gender()
-		elif self.filename == 'marriage':
+		elif self.fieldname == 'marriage':
 			return r.random_marr()
 
-		elif self.filename == 'ymd':
+		elif self.fieldname == 'ymd':
 			return r.random_ymd()
 
-		elif self.filename == 'ip':
+		elif self.fieldname == 'ip':
 			return r.random_ipv4()
 
-		elif self.filename == 'perId':
+		elif self.fieldname == 'perId':
 			return r.random_id_number()
 
-		elif self.filename == 'age':
+		elif self.fieldname == 'age':
 
 			return r.random_age()
 
-		elif self.filename == 'industries':
+		elif self.fieldname == 'industries':
 			return r.random_industries()
 
-		elif self.filename == 'politics':
+		elif self.fieldname == 'politics':
 			return r.random_politics()
 
-		elif self.filename == 'schoolName':
+		elif self.fieldname == 'schoolName':
 			return r.random_schoolName()
 
-		elif self.filename == 'degree':
+		elif self.fieldname == 'degree':
 			return r.random_degree()
-		elif self.filename == 'field':
+		elif self.fieldname == 'field':
 			return r.random_filed_of_study()
 
 		else:
-			return 'unknow filename'
+			return 'unknow fieldname'
 
 
