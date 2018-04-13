@@ -1,1 +1,4 @@
 mysql.conf
+*.pyc
+properties
+
