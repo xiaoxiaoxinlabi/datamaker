@@ -1,9 +1,11 @@
 #coding:utf-8
 import os
 import sys
-sys.path.append("..")
+#sys.path.append("..")
+sys.path.append('..')
 from src.jdbc.excelJdbc import ExcelJdbc
 from src.jdbc.csvJdbc import CsvJdbc
+from src.jdbc.jsonJdbc import JsonJdbc
 
 from configparser import ConfigParser 
 
@@ -16,7 +18,7 @@ def do_main():
     try:
 
         cf = ConfigParser()
-        cf.read(os.path.pardir + '/config/properties')
+        cf.read(os.path.pardir + '/config/properties', encoding='utf-8')
         number = cf.get('configs', 'number')
         path = cf.get('configs', 'path')
         columns = (cf.get('configs','column').replace(' ','').split(','))
@@ -32,6 +34,11 @@ def do_main():
                 ex.writer_excel()
             elif ext == 'csv':
                 cs = CsvJdbc(number, path, columns)
+                cs.create_data()
+
+            elif ext == 'json':
+                
+                cs = JsonJdbc(number, path, columns)
                 cs.create_data()
 
             else:
