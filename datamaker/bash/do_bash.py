@@ -22,6 +22,8 @@ def do_main():
         number = cf.get('configs', 'number')
         path = cf.get('configs', 'path')
         columns = (cf.get('configs','column').replace(' ','').split(','))
+
+        print(columns)
         ext  = (os.path.splitext(path)[1]).replace('.','')
   
 
@@ -32,7 +34,7 @@ def do_main():
             if ext == 'xls':
                 ex = ExcelJdbc(number, path, columns)
                 ex.writer_excel()
-            elif ext == 'csv':
+            elif ext == 'csv' or ext == '' or ext == 'txt':
                 cs = CsvJdbc(number, path, columns)
                 cs.create_data()
 
@@ -43,7 +45,7 @@ def do_main():
 
             else:
 
-            	print('only supported formats are：(csv，xls)')
+            	print('only supported formats are：(csv，xls,json, txt)')
 
         else:
 

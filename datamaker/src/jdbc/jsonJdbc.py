@@ -7,6 +7,8 @@ from src.entity.columns import ColumnName
 import json
 
 import collections
+import codecs
+
 
 
 
@@ -30,7 +32,7 @@ class JsonJdbc:
 
 
 
-        with open(self.path, 'w') as json_file:
+        with codecs.open(self.path, 'w') as json_file:
 
             while m > 0:
 
