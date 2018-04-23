@@ -23,7 +23,7 @@ def do_main():
         path = cf.get('configs', 'path')
         columns = (cf.get('configs','column').replace(' ','').split(','))
 
-        print(columns)
+        print( columns)
         ext  = (os.path.splitext(path)[1]).replace('.','')
   
 
@@ -45,7 +45,7 @@ def do_main():
 
             else:
 
-            	print('only supported formats are：(csv，xls,json, txt)')
+            	print('only supported formats are：(csv,xls,json,txt)')
 
         else:
 

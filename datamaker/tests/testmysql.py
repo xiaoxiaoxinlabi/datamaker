@@ -76,7 +76,7 @@ class Test1(MysqlJdbc):
 
 
 if __name__ == '__main__':
-    t = Test1('172.24.8.134', 3306, 'datamaster', 'datA123!@#', 'data_for_test')
+    t = Test1('ip', 3306, 'database', 'password', 'data_for_test')
     #t = Test1('127.0.0.1', 3306, 'root', 'root', 'testdata')
 
     #sql = "insert into test1(id, name, class) values(%s, %s, %s)"

@@ -50,6 +50,8 @@ class CsvJdbc:
                 
                 writer.writerow(datas)
 
+                print('number = ',self.number - m + 1)
+
                 m = m - 1
 
         csv_file.close()

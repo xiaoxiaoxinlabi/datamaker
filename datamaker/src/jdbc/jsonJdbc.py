@@ -3,11 +3,11 @@ import sys
 sys.path.append("..")
 from src.entity.columns import ColumnName 
 
-
 import json
 
 import collections
-import codecs
+
+
 
 
 
@@ -32,7 +32,7 @@ class JsonJdbc:
 
 
 
-        with codecs.open(self.path, 'w') as json_file:
+        with open(self.path, 'w') as json_file:
 
             while m > 0:
 
@@ -54,6 +54,8 @@ class JsonJdbc:
 
                 arrayDatas.append(datas)
 
+                print('number = ',self.number - m + 1)
+                
 
                 m = m - 1
 

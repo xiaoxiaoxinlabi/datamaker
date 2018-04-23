@@ -1,10 +1,8 @@
 #coding:utf-8
 
 [configs]
-number = 10000
-#path = D://1234
-#path = D://1234.xls
-path= E://1.csv
+number = 100
+path= E://2
 
 # 目前支持的的字段有一下：（id, perId, name, gender, email, phone, ymd,marriage,ip,industries,politics,schoolName,degree,field）
 column = id, perId, name, gender, email, phone, ymd,marriage,ip,industries,politics,schoolName,degree,field

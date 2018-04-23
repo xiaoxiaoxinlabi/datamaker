@@ -89,6 +89,8 @@ class ExcelJdbc:
 
             self.rows = self.rows + 1
 
+            print('number = ',self.number - m + 1)
+
            
             m = m - 1
 
