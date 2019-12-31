@@ -34,6 +34,8 @@ class SqlJdbc:
 
 
 	def create_table(self):
+
+		# self.delete_database() 
 		self.create_database()
 
 		fileds = ''
@@ -47,7 +49,20 @@ class SqlJdbc:
 
 
 	def insert_data(self):
+
 		pass
+
+
+	def delete_database(self):
+		sql4 = "drop database %s" %self.databaseName
+
+		self.cur.execute(sql4)
+
+
+	def is_exists(self):
+		pass
+
+
 
 
 
