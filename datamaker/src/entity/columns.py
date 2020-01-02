@@ -2,7 +2,7 @@
 
 import sys
 sys.path.append("..")
-from src.randoms import datas as r 
+from randoms import datas as r 
 
 class ColumnName(object):
 
