@@ -4,16 +4,20 @@ import mysql.connector
 import collections
 import sys
 sys.path.append("..")
-from entity.columns import ColumnName 
+from src.entity.columns import ColumnName 
+
+import random
+
+
 
 class SqlJdbc:
 
 
 
-	def __init__(self, database, table, cloumn, number):
+	def __init__(self, number, cloumn, name):
 
-		self.databaseName = database
-		self.tableName = table
+		self.database_name = name
+		self.table_name = name+str(random.randint(0,100)) if name != '' else 'test'
 		self.cloumn = cloumn
 		self.number = number
 
@@ -56,11 +60,16 @@ class SqlJdbc:
 				vals.append(val)
 
 
-			sql5 = "insert into %s  values %s;" %(self.tableName ,tuple(vals))
+			sql5 = "insert into %s values %s;" %(self.table_name ,tuple(vals))
 			print(sql5)
 
 			self.cur.execute(sql5)
 			self.conn.commit()
+
+		self.cur.close()
+		self.conn.close()
+
+	
 
 		
 		
@@ -69,12 +78,13 @@ class SqlJdbc:
 
 	def create_database(self):
 
-		sql1 = "create database if not exists %s " %self.databaseName
-		sql2 = "use %s" %self.databaseName
+		sql1 = "create database if not exists %s " %self.database_name
+		sql2 = "use %s" %self.database_name
 		
 		self.cur.execute(sql1)
 		self.cur.execute(sql2)
-	
+
+
 	
 
 
@@ -84,7 +94,7 @@ class SqlJdbc:
 		self.create_database()
 
 		fileds = ''
-		filed_type = ['int(11)', 'datatime','varchar(255)']
+		filed_type = ['int(11)', 'datetime','varchar(255)']
 
 		for filed in self.cloumn:
 
@@ -101,20 +111,19 @@ class SqlJdbc:
 				fileds = fileds + ' ' + filed +' '+ filed_type[2] + ','
 
 	
-		sql3 = "create table if not exists %s (%s)" %(self.tableName , fileds[:-1])
+		sql3 = "create table if not exists %s (%s)" %(self.table_name , fileds[:-1])
 
 		self.cur.execute(sql3)
-
 
 		
 
 
 
 
+	
+
+		
 
 
 
-if __name__ == '__main__':
-	cloumn = ['id','name','gender']
 
-	SqlJdbc('ggs22','test1',cloumn, 5).insert_data()

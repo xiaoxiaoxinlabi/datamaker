@@ -1,11 +1,12 @@
 #coding:utf-8
 import os
 import sys
-#sys.path.append("..")
+
 sys.path.append('..')
 from src.jdbc.excelJdbc import ExcelJdbc
 from src.jdbc.csvJdbc import CsvJdbc
 from src.jdbc.jsonJdbc import JsonJdbc
+from src.jdbc.sqlJdbc import SqlJdbc
 
 from configparser import ConfigParser 
 
@@ -19,33 +20,47 @@ def do_main():
 
         cf = ConfigParser()
         cf.read(os.path.pardir + '/config/properties', encoding='utf-8')
+
+        types = cf.get('formats', 'types')
+
         number = cf.get('configs', 'number')
         path = cf.get('configs', 'path')
         columns = (cf.get('configs','column').replace(' ','').split(','))
 
-        print( columns)
         ext  = (os.path.splitext(path)[1]).replace('.','')
+        name = cf.get('configs','name')
   
 
-        if number != '' and  path != '' and columns != '':
+        if number != '' and  path != '' and columns != '' and types != '':
 
             number = int(number)
 
-            if ext == 'xls':
-                ex = ExcelJdbc(number, path, columns)
-                ex.writer_excel()
-            elif ext == 'csv' or ext == '' or ext == 'txt':
-                cs = CsvJdbc(number, path, columns)
-                cs.create_data()
+            if types == 'file':
+ 
 
-            elif ext == 'json':
-                
-                cs = JsonJdbc(number, path, columns)
-                cs.create_data()
+                if ext == 'xls':
+                    ex = ExcelJdbc(number, path, columns)
+                    ex.writer_excel()
+                elif ext == 'csv' or ext == '' or ext == 'txt':
+                    cs = CsvJdbc(number, path, columns)
+                    cs.create_data()
 
-            else:
+                elif ext == 'json':
+                    
+                    cs = JsonJdbc(number, path, columns)
+                    cs.create_data()
 
-            	print('only supported formats are：(csv,xls,json,txt)')
+                else:
+
+                	print('only supported formats are：(csv,xls,json,txt)')
+
+            elif types == 'mysql':
+
+                    # SqlJdbc('ggs22','test1',cloumn, 5).insert_data()
+
+
+                db = SqlJdbc(number, columns, name)
+                db.insert_data()
 
         else:
 
