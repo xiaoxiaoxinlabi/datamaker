@@ -5,6 +5,7 @@ import collections
 import sys
 sys.path.append("..")
 from src.entity.columns import ColumnName 
+from utils import util
 
 import random
 
@@ -14,21 +15,21 @@ class SqlJdbc:
 
 
 
-	def __init__(self, number, cloumn, name):
+
+	def __init__(self, number, cloumn, name='test', **config ):
 
 		self.database_name = name
-		self.table_name = name+str(random.randint(0,100)) if name != '' else 'test'
+		self.table_name = name+str(util.get_time()) 
 		self.cloumn = cloumn
 		self.number = number
 
-		config = {
+		dbinfo = {
 
 		'user':'root',
 		'password':'root',
-		'host':'localhost'
-		}
+		'host':'localhost'}
 
-		self.conn = mysql.connector.connect(**config)
+		self.conn = mysql.connector.connect(**config if config else dbinfo)
 		self.cur = self.conn.cursor()
 
 	

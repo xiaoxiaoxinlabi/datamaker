@@ -9,17 +9,19 @@ from src.jdbc.jsonJdbc import JsonJdbc
 from src.jdbc.sqlJdbc import SqlJdbc
 
 from configparser import ConfigParser 
-
+import datetime
 
 
 
 def do_main():
 
+ 
 
     try:
 
         cf = ConfigParser()
         cf.read(os.path.pardir + '/config/properties', encoding='utf-8')
+
 
         types = cf.get('formats', 'types')
 
@@ -28,7 +30,13 @@ def do_main():
         columns = (cf.get('configs','column').replace(' ','').split(','))
 
         ext  = (os.path.splitext(path)[1]).replace('.','')
-        name = cf.get('configs','name')
+        name = cf.get('formats','name')
+
+        dbinfo = dict(cf.items('dbinfo'))
+
+   
+    
+
   
 
         if number != '' and  path != '' and columns != '' and types != '':
@@ -56,10 +64,9 @@ def do_main():
 
             elif types == 'mysql':
 
-                    # SqlJdbc('ggs22','test1',cloumn, 5).insert_data()
+                    
 
-
-                db = SqlJdbc(number, columns, name)
+                db = SqlJdbc(number, columns, name,  **dbinfo)
                 db.insert_data()
 
         else:
