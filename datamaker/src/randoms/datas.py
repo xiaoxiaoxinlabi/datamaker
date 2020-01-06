@@ -105,12 +105,23 @@ def random_ipv4():
 
 
 def random_id_number():
+  # 6（数字地址码） + 8（出生日期）+3（顺序码）+1（数字校验码）
+
+  with open(os.path.dirname(__file__) +'/arrcode', 'r',  encoding = 'utf8') as f:
+
+    data = f.readlines()
+
+    pre = int(data[random.randint(0,len(data))].split(":")[0].replace('"',''))
+    
+
     ARR = (7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2)
     LAST = ('1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2')
 
+
     t = time.localtime()[0]
-    x = '%02d%02d%02d%04d%02d%02d%03d' %(random.randint(10, 99), random.randint(1, 99), random.randint(1, 99), random.randint(t - 80, t - 18), random.randint(1, 12), random.randint(1, 28), random.randint(1, 999))
+    x = '%06d%04d%02d%02d%03d' %(pre, random.randint(t - 80, t - 18), random.randint(1, 12), random.randint(1, 28), random.randint(1, 999))
     y = 0
+
 
     for i in range(17):
         y = y + int(x[i]) * ARR[i]
@@ -165,4 +176,9 @@ def random_ymd( start = "1900-01-01", end = "2017-01-01", format="%Y-%m-%d"):
 
     return random.sample([datetime.strftime(start_time + timedelta(i), format) for i in range(0, days)], 1)
 
+
+
+if __name__ == '__main__':
+
+  print(random_id_number())
 
