@@ -1,16 +1,16 @@
 #coding:utf-8
 [formats]
 # types (file, mysql)
-types = mysql
+types = file
 name = xxx
 
 
 [configs]
-number = 5
+number = 3
 path= E://2
 
 # 目前支持的的字段有一下：（id, perId, name, gender, email, phone, ymd,marriage,ip,industries,politics,schoolName,degree,field）
-column = id, perId, name, gender, email, phone, ymd,marriage,ip,industries,politics,schoolName,degree,field
+column = id, perId, name, gender, email, phone, ymd,marriage,ip,industries,politics,schoolName,degree,field,address
 
 
 

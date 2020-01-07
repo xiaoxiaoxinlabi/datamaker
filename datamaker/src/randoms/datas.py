@@ -8,7 +8,7 @@ import socket
 import struct
 import time
 import os
-
+import json
 
 
 #随机产生一个整数
@@ -107,11 +107,8 @@ def random_ipv4():
 def random_id_number():
   # 6（数字地址码） + 8（出生日期）+3（顺序码）+1（数字校验码）
 
-  with open(os.path.dirname(__file__) +'/arrcode', 'r',  encoding = 'utf8') as f:
-
-    data = f.readlines()
-
-    pre = int(data[random.randint(0,len(data))].split(":")[0].replace('"',''))
+    data = get_dict()
+    pre = random.choice(list(data.keys()))
     
 
     ARR = (7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2)
@@ -119,7 +116,7 @@ def random_id_number():
 
 
     t = time.localtime()[0]
-    x = '%06d%04d%02d%02d%03d' %(pre, random.randint(t - 80, t - 18), random.randint(1, 12), random.randint(1, 28), random.randint(1, 999))
+    x = '%06d%04d%02d%02d%03d' %(int(pre), random.randint(t - 80, t - 18), random.randint(1, 12), random.randint(1, 28), random.randint(1, 999))
     y = 0
 
 
@@ -164,7 +161,7 @@ def random_filed_of_study():
 
 
 
-#todo 时间效率
+
 def random_ymd( start = "1900-01-01", end = "2017-01-01", format="%Y-%m-%d"):
 
 
@@ -177,8 +174,30 @@ def random_ymd( start = "1900-01-01", end = "2017-01-01", format="%Y-%m-%d"):
     return random.sample([datetime.strftime(start_time + timedelta(i), format) for i in range(0, days)], 1)
 
 
+def get_dict():
 
-if __name__ == '__main__':
+  with open(os.path.dirname(__file__) +'/arrcode', 'r',  encoding = 'utf8') as f:
 
-  print(random_id_number())
+    data = json.loads(f.read())
+
+  return data
+
+
+
+
+# 住址
+def random_address():
+
+  data = get_dict()
+
+  return random.choice(list(data.values()))
+
+
+
+
+
+
+
+
+  
 

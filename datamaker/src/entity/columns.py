@@ -65,6 +65,9 @@ class ColumnName(object):
 		elif self.fieldname == 'field':
 			return r.random_filed_of_study()
 
+		elif self.fieldname == 'address':
+			return r.random_address()
+
 		else:
 			return 'unknow fieldname'
 
